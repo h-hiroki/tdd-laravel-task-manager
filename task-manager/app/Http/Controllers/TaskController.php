@@ -13,4 +13,14 @@ class TaskController extends Controller
 
         return view('tasks.index', ['tasks' => $tasks]);
     }
+
+    public function detail(int $id)
+    {
+        $task = Task::find($id);
+        if ($task === null) {
+            abort(404);
+        }
+
+        return view('tasks.detail', ['task' => $task]);
+    }
 }
